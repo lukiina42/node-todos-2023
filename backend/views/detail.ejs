@@ -4,27 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../index.css" />
     <title><%= todo.title %></title>
   </head>
   <body>
-    <h1><%= todo.title %></h1>
+    <div class="detail-top">
+      <h1><%= todo.title %></h1>
+      <div class="todo-category"><%= todo.category %></div>
+    </div>
 
-    <div>
+    <div class="detail-top">
       <a href="/toggle-todo/<%= todo.id %>">
         <%= todo.done ? 'Hotovo' : 'Nesplněno' %>
       </a>
-      <a href="/remove-todo/<%= todo.id %>">
-        Odebrat
-      </a>
+      <a href="/remove-todo/<%= todo.id %>"> Odebrat </a>
     </div>
 
     <form method="post" action="/update-todo/<%= todo.id %>">
       <h2>Upravit</h2>
-      <input type="text" name="title" placeholder="Název">
+      <label for="title">Title</label>
+      <input type="text" name="title" placeholder="Název" />
+      <label for="category">Category</label>
+      <input
+        type="text"
+        name="category"
+        id="category"
+        placeholder="Kategorie"
+      />
       <button type="submit">Uložit</button>
     </form>
 
-    <hr>
+    <hr />
 
     <a href="/">Zpět na seznam ToDos</a>
   </body>
