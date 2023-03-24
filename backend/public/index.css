@@ -56,3 +56,14 @@ button {
   gap: 1rem;
   align-items: center;
 }
+
+.filter-category {
+  border-top: solid 1px black;
+  padding-top: 1rem;
+}
+
+.forms-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
