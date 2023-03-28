@@ -11,13 +11,15 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-  let todos = await db("todos").select("*");
+  let todos;
   if (req.query.category) {
-    const filter = String(req.query.category);
-    todos = todos.filter((todo) => {
-      return todo.category.toLowerCase().includes(filter.toLowerCase());
-    });
+    todos = await db("todos")
+      .select("*")
+      .whereLike("category", `${req.query.category}%`);
+  } else {
+    todos = await db("todos").select("*");
   }
+
   return res.render("index", {
     todos: todos,
   });
